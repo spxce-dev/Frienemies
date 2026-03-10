@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICEDOUT - Luxury Jewelry Store</title>
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="favicon.ico" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container header-container">
+      <!-- Mobile Menu Button -->
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Logo -->
+      <a href="#home" class="logo" aria-label="ICEDOUT Home">ICEDOUT</a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-desktop" aria-label="Main navigation">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#categories" class="nav-link">Categories</a>
+        <a href="#best-sellers" class="nav-link">Best Sellers</a>
+      </nav>
+
+      <!-- Right Icons -->
+      <div class="header-icons">
+        <button class="search-btn" id="searchBtn" aria-label="Search">
+          <i class="fas fa-search"></i>
+        </button>
+        <button class="cart-btn" id="cartBtn" aria-label="Cart">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MOBILE MENU ===== -->
+  <div class="mobile-menu-overlay" id="menuOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile menu">
+    <button class="close-menu" id="closeMenu" aria-label="Close menu">
+      <i class="fas fa-times"></i>
+    </button>
+    <h2 class="menu-logo">ICEDOUT</h2>
+    <nav class="menu-nav" aria-label="Mobile navigation">
+      <a href="#home" class="menu-link">Home</a>
+      <a href="#categories" class="menu-link">Categories</a>
+      <a href="#best-sellers" class="menu-link">Best Sellers</a>
+      <a href="#footer" class="menu-link">Contact</a>
+    </nav>
+  </div>
+
+  <!-- ===== SEARCH OVERLAY ===== -->
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="container search-container">
+      <i class="fas fa-search" aria-hidden="true"></i>
+      <input type="text" class="search-input" placeholder="Search for products..." id="searchInput" />
+      <button class="close-search" id="closeSearch" aria-label="Close search">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== CART SIDEBAR ===== -->
+  <div class="mobile-menu-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar" role="dialog" aria-modal="true" aria-label="Cart">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="close-menu" id="closeCart" aria-label="Close cart">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="empty-cart">Your cart is empty</p>
+    </div>
+    <div class="cart-total">
+      Total: R<span id="cartTotal">0</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn">Checkout</button>
+  </div>
+
+  <!-- ===== HERO BANNER ===== -->
+  <section class="hero-banner" id="home">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+      <h1 class="hero-heading">Love, Set in Diamonds</h1>
+      <p class="hero-text">Celebrate your story with the perfect gift,</p>
+      <p class="hero-text">plus a free gift on $200+.</p>
+      <a href="#best-sellers" class="shop-now-link">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORY GRID ===== -->
+  <section class="category-section" id="categories">
+    <div class="container">
+      <h2 class="section-title">Shop by Category</h2>
+
+      <div class="category-grid">
+        <!-- Category 1 -->
+        <div class="category-card">
+          <a href="#watches" class="category-link">
+            <div class="category-image-container">
+              <img src="images/Watches.JPG" alt="Watches" class="category-image">
+            </div>
+            <h3 class="category-title">Watches</h3>
+          </a>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="category-card">
+          <a href="#sunglasses" class="category-link">
+            <div class="category-image-container">
+              <img src="images/sunglasse.JPG" alt="Sunglasses" class="category-image">
+            </div>
+            <h3 class="category-title">Sunglasses</h3>
+          </a>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="category-card">
+          <a href="#necklaces" class="category-link">
+            <div class="category-image-container">
+              <img src="images/Necklaces.jpg" alt="Necklaces" class="category-image">
+            </div>
+            <h3 class="category-title">Necklaces</h3>
+          </a>
+        </div>
+
+        <!-- Category 4 -->
+        <div class="category-card">
+          <a href="#bracelets" class="category-link">
+            <div class="category-image-container">
+              <img src="images/Bracelets.JPG" alt="Bracelets" class="category-image">
+            </div>
+            <h3 class="category-title">Bracelets</h3>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BEST SELLERS (PRODUCTS) ===== -->
+  <section class="best-sellers" id="best-sellers">
+    <div class="container">
+      <h2 class="section-title">All Products</h2>
+      <div class="products-grid" id="productsGrid">
+        <!-- Products loaded by JavaScript -->
+      </div>
+      <!-- Removed: View All Products button -->
+    </div>
+  </section>
+
+  <!-- ===== FOOTERPIC SECTION (ABOVE ORIGINAL FOOTER) ===== -->
+  <section class="featured-product-section" aria-label="Featured image">
+    <div class="container">
+      <div class="featured-product-content">
+        <img
+          src="images/footerpic.JPG"
+          alt="ICEDOUT Featured"
+          style="width:100%;max-width:900px;margin:0 auto;display:block;border-radius:10px;"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ORIGINAL FOOTER ===== -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- About Section -->
+        <div class="footer-section">
+          <div class="section-header" data-section="about">
+            <h3 class="footer-section-title">About</h3>
+            <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </div>
+          <div class="section-content" id="about-content">
+            <div class="footer-links">
+              <a href="#" class="footer-link">Our Story</a>
+              <a href="#" class="footer-link">Craftsmanship</a>
+              <a href="#" class="footer-link">Sustainability</a>
+              <a href="#" class="footer-link">Careers</a>
+              <a href="#" class="footer-link">Press</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Help Section -->
+        <div class="footer-section">
+          <div class="section-header" data-section="help">
+            <h3 class="footer-section-title">Help</h3>
+            <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </div>
+          <div class="section-content" id="help-content">
+            <div class="footer-links">
+              <a href="#" class="footer-link">Contact Us</a>
+              <a href="#" class="footer-link">Shipping & Delivery</a>
+              <a href="#" class="footer-link">Returns & Exchanges</a>
+              <a href="#" class="footer-link">Size Guide</a>
+              <a href="#" class="footer-link">FAQs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- More Section -->
+        <div class="footer-section">
+          <div class="section-header" data-section="more">
+            <h3 class="footer-section-title">More</h3>
+            <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </div>
+          <div class="section-content" id="more-content">
+            <div class="footer-links">
+              <a href="#" class="footer-link">Gift Cards</a>
+              <a href="#" class="footer-link">Store Locator</a>
+              <a href="#" class="footer-link">Wholesale</a>
+              <a href="#" class="footer-link">Corporate Gifts</a>
+              <a href="#" class="footer-link">Privacy Policy</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsletter & Social Section -->
+        <div class="newsletter-section">
+          <div class="newsletter-content">
+            <h3>NEWSLETTER</h3>
+            <p class="newsletter-text">
+              Subscribe to receive updates, access to exclusive deals, and more.
+            </p>
+
+            <!-- Social Icons -->
+            <div class="social-icons">
+              <a href="https://instagram.com" class="social-icon" target="www.instagram.com/iced_outjewel" title="Instagram" rel="noopener">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://facebook.com" class="social-icon" target="_blank" title="Facebook" rel="noopener">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://twitter.com" class="social-icon" target="_blank" title="Twitter" rel="noopener">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://pinterest.com" class="social-icon" target="_blank" title="Pinterest" rel="noopener">
+                <i class="fab fa-pinterest-p"></i>
+              </a>
+            </div>
+
+            <!-- Newsletter Form -->
+            <form class="newsletter-form" id="newsletterForm">
+              <input
+                type="email"
+                class="email-input"
+                placeholder="Enter Your E-mail"
+                id="newsletterEmail"
+                required
+              />
+              <button type="submit" class="subscribe-btn">
+                Subscribe
+              </button>
+            </form>
+
+            <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.75rem; margin-top: 10px;">
+              By subscribing, you agree to our Privacy Policy.
+            </p>
+          </div>
+        </div>
+
+        <!-- Logo & Copyright Section -->
+        <div class="logo-copyright">
+          <img
+            src="images/IOLogo.jpg"
+            alt="ICEDOUT Logo"
+            class="footer-logo"
+          />
+          <p class="copyright">&copy; 2026 ICEDOUT Official</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

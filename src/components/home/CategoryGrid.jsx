@@ -1,64 +1,61 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { createPageUrl } from '@/utils';
-
 const categories = [
   {
-    name: 'Watches',
-    slug: 'watches',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69825c576ea90587a8aa211f/0f0dfe30c_c5190f96-adc4-4503-8d1f-d328c4633430.jpeg'
+    name: "T-Shirts",
+    image:
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    name: 'Sunglasses',
-    slug: 'sunglasses',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69825c576ea90587a8aa211f/4298b61ed_d5a2120b-3529-4732-93f4-dee1d75116e4.jpeg'
+    name: "Hoodies",
+    image:
+      "https://images.unsplash.com/photo-1503341504253-dff4815485f1?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    name: 'Necklaces',
-    slug: 'necklaces',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69825c576ea90587a8aa211f/83e9fc5d1_6c432e2d-7115-4b8b-881e-accd9545caf5.jpeg'
+    name: "Jackets",
+    image:
+      "https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    name: 'Bracelets',
-    slug: 'bracelets',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69825c576ea90587a8aa211f/ec93f8a16_b536a7e8-68a7-49af-86c9-1eeb1e56314b.jpeg'
-  }
+    name: "Accessories",
+    image:
+      "https://images.unsplash.com/photo-1521369909029-2afed882baee?q=80&w=1200&auto=format&fit=crop",
+  },
 ];
 
 export default function CategoryGrid() {
   return (
-    <div className="bg-[#F0F9FF] py-2">
-      <div className="grid grid-cols-2 gap-2 px-2">
-        {categories.map((category, index) => (
-          <motion.div
-            key={category.slug}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            <Link 
-              to={createPageUrl('Products') + `?category=${category.slug}`}
-              className="block bg-white rounded-sm overflow-hidden group"
+    <section id="categories" className="bg-orange-50 py-20">
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
+        <div className="mb-10 text-center">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.28em] text-orange-500">
+            Collections
+          </p>
+          <h2 className="text-3xl font-bold text-zinc-900 md:text-4xl">
+            Shop by Category
+          </h2>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {categories.map((category) => (
+            <div
+              key={category.name}
+              className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-orange-100 transition hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="aspect-[3/4] overflow-hidden">
-                <img 
+                <img
                   src={category.image}
                   alt={category.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>
-              <h3 
-                className="text-center py-4 text-lg tracking-wide text-[#0EA5E9]"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-              >
-                {category.name}
-              </h3>
-            </Link>
-          </motion.div>
-        ))}
+              <div className="p-5 text-center">
+                <h3 className="text-lg font-bold text-zinc-900">
+                  {category.name}
+                </h3>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

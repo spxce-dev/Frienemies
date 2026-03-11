@@ -1,51 +1,45 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { createPageUrl } from '@/utils';
+import { Link } from "react-router-dom";
 
-export default function ProductCard({ product, index = 0 }) {
+export default function ProductCard({ product }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group"
-    >
-      <Link to={createPageUrl('ProductDetail') + `?id=${product.id}`}>
-        <div className="relative bg-[#E0F2FE] aspect-square overflow-hidden mb-2 rounded-sm">
-          {product.is_best_seller && (
-            <span className="absolute top-3 left-3 bg-[#0EA5E9] text-white text-xs px-3 py-1.5 z-10 tracking-wide">
-              Best Sellers
-            </span>
-          )}
-          <img 
-            src={product.image_url || 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80'}
+    <div className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-orange-100 transition hover:-translate-y-1 hover:shadow-xl">
+      <Link to={`/products/${product.id}`} className="block">
+        <div className="aspect-[4/5] overflow-hidden bg-orange-50">
+          <img
+            src={product.image}
             alt={product.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
           />
         </div>
-        
-        <div className="text-center px-2">
-          <h3 
-            className="text-[#0EA5E9] text-base md:text-lg mb-1 leading-tight"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-          >
+      </Link>
+
+      <div className="p-5">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-orange-500">
+          {product.category}
+        </p>
+
+        <Link to={`/products/${product.id}`}>
+          <h3 className="mb-2 text-lg font-bold text-zinc-900 transition group-hover:text-orange-500">
             {product.name}
           </h3>
-          
-          {product.description && (
-            <p className="text-gray-500 text-xs md:text-sm mb-2 line-clamp-2">
-              {product.description}
-            </p>
-          )}
-          
-          <p className="text-[#0EA5E9] text-sm font-medium">
-            {product.price_from && <span className="font-normal">from </span>}
-            ${product.price?.toLocaleString()}
-          </p>
+        </Link>
+
+        <p className="mb-4 text-sm text-zinc-600">{product.description}</p>
+
+        <div className="flex items-center justify-between gap-3">
+          <span className="text-xl font-bold text-orange-500">
+            R{product.price}
+          </span>
+
+          <Link
+            to="/cart"
+            className="rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-600"
+          >
+            Add to Cart
+          </Link>
         </div>
-      </Link>
-    </motion.div>
+      </div>
+    </div>
   );
+}
 }

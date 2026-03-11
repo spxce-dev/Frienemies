@@ -1,63 +1,43 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { createPageUrl } from '@/utils';
+import { Link } from "react-router-dom";
 
 export default function HeroBanner() {
   return (
-    <div className="relative w-full h-[85vh] min-h-[600px] overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69825c576ea90587a8aa211f/82370db00_IMG_6726.jpg')`,
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50" />
-      </div>
+    <section className="relative overflow-hidden bg-orange-50">
+      <div className="mx-auto grid min-h-[78vh] max-w-7xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:px-6">
+        <div>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
+            Frienemies
+          </p>
+          <h1 className="mb-5 text-5xl font-bold leading-tight text-zinc-900 md:text-7xl">
+            Bold streetwear for the ones who stand out naturally.
+          </h1>
+          <p className="mb-8 max-w-xl text-base text-zinc-600 md:text-lg">
+            Clean fits. Sharp energy. New season pieces built for everyday impact.
+          </p>
+          <div className="flex gap-4">
+            <Link
+              to="/products"
+              className="rounded-full bg-orange-500 px-6 py-3 font-semibold text-white hover:bg-orange-600"
+            >
+              Shop Now
+            </Link>
+            <a
+              href="#categories"
+              className="rounded-full border border-orange-200 px-6 py-3 font-semibold text-orange-500 hover:bg-orange-100"
+            >
+              Explore
+            </a>
+          </div>
+        </div>
 
-      {/* Content */}
-      <div className="relative h-full flex flex-col items-center justify-center text-center px-6">
-        <motion.h1 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="font-serif text-4xl md:text-6xl lg:text-7xl text-white tracking-wide mb-6"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-        >
-          Love, Set in Diamonds
-        </motion.h1>
-        
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-white/90 text-lg md:text-xl max-w-md mx-auto mb-2 font-light tracking-wide"
-        >
-          Celebrate your story with the perfect Valentine's gift,
-        </motion.p>
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="text-white/90 text-lg md:text-xl max-w-md mx-auto mb-8 font-light tracking-wide"
-        >
-          plus a free gift on $200+.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-        >
-          <Link 
-            to={createPageUrl('Products')}
-            className="text-white text-sm tracking-[0.2em] uppercase border-b-2 border-white pb-1 hover:opacity-80 transition-opacity"
-          >
-            Shop Now
-          </Link>
-        </motion.div>
+        <div className="relative">
+          <img
+            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1400&auto=format&fit=crop"
+            alt="Frienemies fashion campaign"
+            className="h-[520px] w-full rounded-3xl object-cover shadow-2xl"
+          />
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

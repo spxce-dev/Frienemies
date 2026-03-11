@@ -1,142 +1,65 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Instagram, Facebook, Twitter } from 'lucide-react';
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { base44 } from '@/api/base44Client';
-import { toast } from 'sonner';
-
-const FooterSection = ({ title, children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="border-b border-white/20 md:border-none">
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between py-4 md:py-0 md:cursor-default"
-      >
-        <h3 
-          className="text-white text-lg tracking-[0.15em] uppercase"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-        >
-          {title}
-        </h3>
-        <ChevronDown 
-          className={`w-5 h-5 text-white md:hidden transition-transform ${isOpen ? 'rotate-180' : ''}`}
-        />
-      </button>
-      <AnimatePresence>
-        {(isOpen || window.innerWidth >= 768) && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden md:overflow-visible md:mt-4"
-          >
-            <div className="pb-4 md:pb-0 space-y-2">
-              {children}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
 export default function Footer() {
-  const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubscribe = async (e) => {
-    e.preventDefault();
-    if (!email) return;
-    
-    setIsSubmitting(true);
-    try {
-      await base44.entities.Newsletter.create({ email });
-      toast.success('Successfully subscribed!');
-      setEmail('');
-    } catch (error) {
-      toast.error('Failed to subscribe');
-    }
-    setIsSubmitting(false);
-  };
-
   return (
-    <footer className="bg-[#0EA5E9] pt-10 pb-8">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-0 md:gap-8">
-          <FooterSection title="About">
-            <a href="#" className="block text-white/70 hover:text-white text-sm transition-colors">Our Story</a>
-            <a href="#" className="block text-white/70 hover:text-white text-sm transition-colors">Craftsmanship</a>
-            <a href="#" className="block text-white/70 hover:text-white text-sm transition-colors">Sustainability</a>
-          </FooterSection>
+    <footer className="bg-orange-500 text-white">
+      <div className="mx-auto max-w-7xl px-4 py-14 md:px-6">
+        <div className="grid gap-10 md:grid-cols-4">
+          <div>
+            <img
+              src="/frienemies-logo.svg"
+              alt="Frienemies"
+              className="h-10 w-auto rounded-md bg-white p-1"
+            />
+            <p className="mt-4 max-w-xs text-sm text-orange-50">
+              Frienemies is bold streetwear built for everyday presence, clean energy, and standout identity.
+            </p>
+          </div>
 
-          <FooterSection title="Help">
-            <a href="#" className="block text-white/70 hover:text-white text-sm transition-colors">Contact Us</a>
-            <a href="#" className="block text-white/70 hover:text-white text-sm transition-colors">Shipping & Returns</a>
-            <a href="#" className="block text-white/70 hover:text-white text-sm transition-colors">Size Guide</a>
-            <a href="#" className="block text-white/70 hover:text-white text-sm transition-colors">FAQs</a>
-          </FooterSection>
+          <div>
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.24em]">
+              Shop
+            </h3>
+            <ul className="space-y-3 text-sm text-orange-50">
+              <li>T-Shirts</li>
+              <li>Hoodies</li>
+              <li>Jackets</li>
+              <li>Accessories</li>
+            </ul>
+          </div>
 
-          <FooterSection title="More">
-            <a href="#" className="block text-white/70 hover:text-white text-sm transition-colors">Gift Cards</a>
-            <a href="#" className="block text-white/70 hover:text-white text-sm transition-colors">Store Locator</a>
-            <a href="#" className="block text-white/70 hover:text-white text-sm transition-colors">Press</a>
-          </FooterSection>
+          <div>
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.24em]">
+              Help
+            </h3>
+            <ul className="space-y-3 text-sm text-orange-50">
+              <li>Shipping & Delivery</li>
+              <li>Returns</li>
+              <li>Size Guide</li>
+              <li>Contact</li>
+            </ul>
+          </div>
 
-          <div className="mt-6 md:mt-0">
-            <h3 
-              className="text-white text-lg tracking-[0.15em] uppercase mb-4"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-            >
+          <div>
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.24em]">
               Newsletter
             </h3>
-            
-            <div className="flex gap-4 mb-6">
-              <a href="#" className="text-white hover:opacity-70 transition-opacity">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-white hover:opacity-70 transition-opacity">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-white hover:opacity-70 transition-opacity">
-                <Twitter className="w-5 h-5" />
-              </a>
-            </div>
-
-            <form onSubmit={handleSubscribe} className="flex border-b border-white/50">
+            <p className="mb-4 text-sm text-orange-50">
+              Subscribe for new drops, product updates, and exclusive offers.
+            </p>
+            <div className="flex rounded-full bg-white p-1">
               <input
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter Your E-mail"
-                className="flex-1 bg-transparent text-white placeholder-white/50 text-sm py-2 outline-none"
+                placeholder="Enter your email"
+                className="w-full rounded-full px-4 py-2 text-sm text-zinc-900 outline-none"
               />
-              <button 
-                type="submit"
-                disabled={isSubmitting}
-                className="text-white text-sm tracking-[0.1em] uppercase hover:opacity-70 transition-opacity"
-              >
-                Subscribe
+              <button className="rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white">
+                Join
               </button>
-            </form>
+            </div>
           </div>
         </div>
 
-        {/* Logo & Copyright */}
-        <div className="mt-12 text-center">
-          <div className="mb-6">
-            <img 
-              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69825c576ea90587a8aa211f/e909bd1fd_c5b21d22-5dbd-4e28-8366-706fbcbb0681.jpeg"
-              alt="ICEDOUT Store"
-              className="w-20 h-20 mx-auto rounded-full object-cover"
-            />
-          </div>
-          <p className="text-white/50 text-sm">
-            © 2026 ICEDOUT Official
-          </p>
+        <div className="mt-10 border-t border-orange-400 pt-6 text-center text-sm text-orange-100">
+          © 2026 Frienemies. All rights reserved.
         </div>
       </div>
     </footer>

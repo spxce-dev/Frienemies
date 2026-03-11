@@ -1,28 +1,41 @@
-name: Build Frienemies Site
+name: Build Vite (dist) Artifact
 
 on:
   push:
-    branches: [main]
-  workflow_dispatch:
+    branches: ["main", "master"]
+  workflow_dispatch: {}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v6
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v6
+      - name: Use Node.js (LTS)
+        uses: actions/setup-node@v4
         with:
-          node-version: 24
-          cache: npm
+          node-version: "20"
+          cache: "npm"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build project
+      - name: Build
         run: npm run build
-      - name: Build site
-        run: npm run build
+
+      # Optional: helpful for debugging what got built
+      - name: List dist
+        run: |
+          echo "=== dist contents ==="
+          ls -la dist || true
+
+      - name: Upload dist as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          if-no-files-found: error

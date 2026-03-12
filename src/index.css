@@ -8,7 +8,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: Inter, system-ui, sans-serif;
   background: #ffffff;
   color: #18181b;
 }
@@ -19,5 +19,5 @@ body {
 
 img {
   max-width: 100%;
-}
+  display: block;
 }
